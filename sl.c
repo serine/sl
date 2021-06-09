@@ -48,6 +48,8 @@ void add_man(int y, int x);
 int add_C51(int x);
 int add_D51(int x);
 int add_sl(int x);
+int add_boat(int x);
+int add_copter(int x);
 void option(char *str);
 int my_mvaddstr(int y, int x, char *str);
 
@@ -55,6 +57,8 @@ int ACCIDENT  = 0;
 int LOGO      = 0;
 int FLY       = 0;
 int C51       = 0;
+int BOAT      = 0;
+int COPTER    = 0;
 
 int my_mvaddstr(int y, int x, char *str)
 {
@@ -75,6 +79,8 @@ void option(char *str)
             case 'F': FLY      = 1; break;
             case 'l': LOGO     = 1; break;
             case 'c': C51      = 1; break;
+            case 'b': BOAT     = 1; break;
+            case 'h': COPTER   = 1; break;
             default:                break;
         }
     }
@@ -104,12 +110,18 @@ int main(int argc, char *argv[])
         else if (C51 == 1) {
             if (add_C51(x) == ERR) break;
         }
+        else if (BOAT == 1) {
+            if (add_boat(x) == ERR) break;
+        }
+        else if (COPTER == 1) {
+            if (add_copter(x) == ERR) break;
+        }
         else {
             if (add_D51(x) == ERR) break;
         }
         getch();
         refresh();
-        usleep(40000);
+        usleep(80000);
     }
     mvcur(0, COLS - 1, LINES - 1, 0);
     endwin();
@@ -158,6 +170,65 @@ int add_sl(int x)
     return OK;
 }
 
+
+int add_boat(int x)
+{
+    static char *d51[BOATPATTERNS][BOATHEIGHT + 1]
+        = {{BOAT01STR1, BOAT01STR2, BOAT01STR3, BOAT01STR4, BOAT01STR11, D51DEL},
+          {BOAT01STR1, BOAT01STR2, BOAT01STR3, BOAT01STR4, BOAT01STR12, D51DEL},
+          {BOAT01STR1, BOAT01STR2, BOAT01STR3, BOAT01STR4, BOAT01STR13, D51DEL},
+          {BOAT01STR1, BOAT01STR2, BOAT01STR3, BOAT01STR4, BOAT01STR14, D51DEL},
+          {BOAT01STR1, BOAT01STR2, BOAT01STR3, BOAT01STR4, BOAT01STR15, D51DEL}};
+
+    int y, i, dy = 0;
+
+    if (x < - BOATLENGTH)  return ERR;
+    y = LINES / 2 - 5;
+
+    if (FLY == 1) {
+        y = (x / 7) + LINES - (COLS / 7) - BOATHEIGHT;
+        dy = 1;
+    }
+    for (i = 0; i <= BOATHEIGHT; ++i) {
+        my_mvaddstr(y + i, x, d51[(BOATLENGTH + x) % BOATPATTERNS][i]);
+    }
+
+    return OK;
+}
+
+int add_copter(int x)
+{
+    static char *copter[COPTERPATTERNS][COPTERHEIGHT + 1]
+        = {{COPTER02STR11, COPTER02STR12, COPTER01STR1, COPTER01STR2, COPTER01STR3,
+            COPTER01STR4, COPTER01STR5, COPTER01STR6, COPTER01STR7, COPTER01STR8,
+            COPTER01STR9, COPTER01STR10, COPTER01STR11, COPTER01STR12, COPTER01STR13, D51DEL},
+           {COPTER02STR21, COPTER02STR22, COPTER01STR1, COPTER01STR2, COPTER01STR3,
+            COPTER01STR4, COPTER01STR5, COPTER01STR6, COPTER01STR7, COPTER01STR8,
+            COPTER01STR9, COPTER01STR10, COPTER01STR11, COPTER01STR12, COPTER01STR13, D51DEL},
+           {COPTER02STR31, COPTER02STR32, COPTER01STR1, COPTER01STR2, COPTER01STR3,
+            COPTER01STR4, COPTER01STR5, COPTER01STR6, COPTER01STR7, COPTER01STR8,
+            COPTER01STR9, COPTER01STR10, COPTER01STR11, COPTER01STR12, COPTER01STR13, D51DEL},
+           {COPTER02STR41, COPTER02STR42, COPTER01STR1, COPTER01STR2, COPTER01STR3,
+            COPTER01STR4, COPTER01STR5, COPTER01STR6, COPTER01STR7, COPTER01STR8,
+            COPTER01STR9, COPTER01STR10, COPTER01STR11, COPTER01STR12, COPTER01STR13, D51DEL}};
+
+    int y, i, dy = 0;
+
+    if (x < - COPTERLENGTH)  return ERR;
+    y = LINES / 2 - 5;
+
+    if (FLY == 1) {
+        y = (x / 7) + LINES - (COLS / 7) - COPTERHEIGHT;
+        dy = 1;
+    }
+    for (i = 0; i <= COPTERHEIGHT; ++i) {
+        my_mvaddstr(y + i, x, copter[(COPTERLENGTH + x) % COPTERPATTERNS][i]);
+    }
+    return OK;
+
+
+
+}
 
 int add_D51(int x)
 {
@@ -242,7 +313,7 @@ int add_C51(int x)
 
 void add_man(int y, int x)
 {
-    static char *man[2][2] = {{"", "(O)"}, {"Help!", "\\O/"}};
+    static char *man[2][2] = {{"", "(O)"}, {" Oleg Yay! ", "\\O/"}};
     int i;
 
     for (i = 0; i < 2; ++i) {

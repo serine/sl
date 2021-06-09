@@ -7,11 +7,57 @@
  *========================================
  */
 
+#define COPTERHEIGHT	 13
+#define COPTERFUNNEL	 7
+#define COPTERLENGTH	75
+#define COPTERPATTERNS	 4
+
+#define COPTER02STR41  "                           _   _                 "
+#define COPTER02STR42  "                           `-[]-'                "
+
+#define COPTER02STR31  "                  __________    __________                 "
+#define COPTER02STR32  "                  `---------`()'----------'                "
+
+#define COPTER02STR21  "             _______________    _______________                 "
+#define COPTER02STR22  "             `--------------`()'---------------'                "
+
+#define COPTER02STR11  " ___________________________    __________________________                 "
+#define COPTER02STR12  " `--------------------------`()'--------------------------'                "
+
+#define COPTER01STR1  "                             ||                                            "
+#define COPTER01STR2  "                          __ ||                                        __  "
+#define COPTER01STR3  "                          ] \"\"\"\"---...._                             .' /  "
+#define COPTER01STR4  "                    _,-\"\"\"==============`--.                       .\'/)/   "
+#define COPTER01STR5  "                  ,' ) ,--. .-----.         `.___________________.' ///_   "
+#define COPTER01STR6  "                .'  / /___| |_____|  e c      G-DMG       _______  ()  _>  "
+#define COPTER01STR7  "               /   / /____| |__|__|             ,----\"\"\"\"\"       `//  \    "
+#define COPTER01STR8  "             .<`=='===========================.'                 (/`.  \\   "
+#define COPTER01STR9  "            (  `.----------------------------/                       `._\\  "
+#define COPTER01STR10 "             `-._\\_                ____...--'                              "
+#define COPTER01STR11 "                   \"\"\"--ii--\'\"\"\"77\"                                        "
+#define COPTER01STR12 "         hjw      .____//______//___,                                      "
+#define COPTER01STR13 "                  `-----------------'                                      "
+
+#define BOATHEIGHT	 5
+#define BOATFUNNEL	 7
+#define BOATLENGTH	51
+#define BOATPATTERNS	 5
+
+#define BOAT01STR1 "               (_)                                   "
+#define BOAT01STR2 "            --""-------   0/      ^^                 "
+#define BOAT01STR3 "  .___...../ /__| |__\\ \\_/H__,      ^^               "
+#define BOAT01STR4 "   \\                        /                        "
+
+#define BOAT01STR11 " #^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~\\O/~~\\Q/~^~^~rr  "
+#define BOAT01STR12 " #####^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~\\O/~~\\Q/~^~  "
+#define BOAT01STR13 " #########^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~\\O/~~\\Q  "
+#define BOAT01STR14 " #####^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~\\O/~~\\Q/~^~  "
+#define BOAT01STR15 " #^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~\\O/~~\\Q/~^~^~rr  "
+
 #define D51HEIGHT	10
 #define D51FUNNEL	 7
 #define D51LENGTH	83
 #define D51PATTERNS	 6
-
 
 #define D51STR1  "      ====        ________                ___________ "
 #define D51STR2  "  _D _|  |_______/        \\__I_I_____===__|_________| "
@@ -52,7 +98,7 @@
 #define COAL03 "    _________________         "
 #define COAL04 "   _|                \\_____A  "
 #define COAL05 " =|                        |  "
-#define COAL06 " -|                        |  "
+#define COAL06 " -| Hey hey Oleg and Peter |  "
 #define COAL07 "__|________________________|_ "
 #define COAL08 "|__________________________|_ "
 #define COAL09 "   |_D__D__D_|  |_D__D__D_|   "
